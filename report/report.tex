@@ -62,6 +62,12 @@
 
 \begin{document}
 
+\addto\extras{
+  \let\abbreviation\relax % remove the default abbreviation exception
+  \def\abbreviation{\textit{abbreviation}} % add a custom abbreviation exception
+  \def\NLP{NLP} % add an exception for the abbreviation NLP
+}
+
 % Makes all text pages the same height
 \flushbottom 
 
@@ -79,9 +85,10 @@
 
 In today's world, there is an abundance of films being produced every year. It can be difficult for audiences to keep up with all the latest releases. Movie fans often resort to reading summaries or synopses to get a sense of what a particular film is about before deciding whether or not to watch it. However, it can be a time-consuming and difficult task to manually summarise a long film script.
 
-Here Natural Language Processing (NLP) comes in. Through the use of NLP techniques, we can automate the task of summarising film scripts, saving both time and effort.
+Here Natural Language Processing comes in. Through the use of Natural Language Processing techniques, we can automate the task of summarising film scripts, saving both time and effort.
 
-In this project, our aim is to create a system that can accurately summarise film scripts into concise and informative synopses through the use of NLP. By doing so, we hope to provide film enthusiasts with a quick and efficient way to get a sense of a film's plot, characters and key events. Ultimately, this will help them in their decision-making process when choosing which films to watch.
+In this project, our aim is to create a system that can accurately summarise film scripts into concise and informative synopses through the use of Natural Language Processing. By doing so, we hope to provide film enthusiasts with a quick and efficient way to get a sense of a film's plot, characters and key events. Ultimately, this will help them in their decision-making process when choosing which films to watch.
+
 
 \section*{Related works}
 
