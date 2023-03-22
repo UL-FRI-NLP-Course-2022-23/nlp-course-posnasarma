@@ -232,7 +232,7 @@ justification=raggedright]{caption}
 \renewcommand{\@maketitle}{%
 \twocolumn[{%
 \thispagestyle{empty}%
-{\includegraphics{logo}}
+{\includegraphics[scale=0.2]{logo.png}}
 \vskip-74pt%
 {\raggedleft\small\sffamily\bfseries\@JournalInfo\\\@Archive\par}%
 \vskip64pt%
