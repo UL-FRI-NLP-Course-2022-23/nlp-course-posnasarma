@@ -1,0 +1,982 @@
+>> [MUSIC PLAYING]
+>> [MUSIC PLAYING]
+DAVID MALAN: All right.
+This is CS50.
+[MUSIC PLAYING Tritonal, Cash Cash, "Untouchable"]
+[MUSIC PLAYING]
+SPEAKER 1: I'm going to France, and you're going, too.
+[MUSIC PLAYING]
+DAVID MALAN: This is CS50, Harvard University's introduction
+to the intellectual enterprises of computer science
+and the arts of program-- and for the first time in history,
+Yale University's as well.
+Indeed, whether you're here in Cambridge or in New Haven or Miami or St. Louis
+or Amsterdam or anywhere around the world
+taking CS50, computer science E50, CS50X, CS50 AP,
+we are all one and the same.
+Welcome to CS50.
+>> What we have--
+>> [APPLAUSE]
+>> [LAUGHS]
+>> [APPLAUSE]
+>> So I made a mistake myself some time ago when I started off college.
+And I got to college, and I decided to frankly, stick within my comfort zone.
+I ended up declaring a concentration, or a major, of government.
+Ant that was mostly a function of me being pretty familiar with government
+or at least history or I really liked constitutional law in high school.
+And so when I got here, I kind of gravitated toward things
+with which I was already familiar.
+Right?
+God forbid I do poorly in the class.
+I certainly wanted to stay within my comfort zone,
+and it wasn't until sophomore year that I finally
+got up the nerve to step foot in a classroom called CS50.
+And at that point, did I finally realize that, my God, homework could actually
+be fun.
+>> Indeed, I was one of those kids that on Friday evenings when
+the P-SETS would be released, I would go back to my room and dive
+into the night's P-SETS.
+And for me, that was a sign that this was a field for me.
+But what was more important was the fact that I did get up this nerve
+to explore waters unfamiliar to me and get beyond my own comfort zone
+and frankly, I only was able to do that sophomore year by taking this class
+pass/fail.
+>> Indeed, it was the very last day that I finally switched over and finally
+declared CS as my concentration, putting gov at that point behind me.
+And so we're not setting out in this course to turn all of you
+into CS majors or concentrators, but rather to give you an opportunity
+to hopefully go beyond the world with which you're currently familiar
+and bring back from this world skills and knowledge and savvy
+that you can apply to your own world, whether that's
+in the humanities, social sciences, natural sciences, or beyond.
+>> Indeed, if you're feeling a little intrepid
+about being in this room let alone in this class,
+realize that if history is any indication, 72% of you
+have never taken a CS course before.
+So it is by all means not the case that the student sitting to the left
+or to the right or in front or behind you knows far more about CS
+or programming in particular than you.
+That's not in fact the case.
+And indeed, much of the support structure
+that we've set up in this course over the past many years
+has been for exactly that reason-- to provide an on ramp that still exits
+just as rigorously and just as high as ever--
+but the slope of which allow students less comfortable and more comfortable
+alike to succeed irrespective of his or her prior background.
+>> Indeed, what ultimately matters in this class is not
+so much where you end up relative to your classmates
+but where you in week 12 end up relative to yourself
+in week zero, which is where we are here today.
+>> Indeed and this may very well and probably does look like Greek
+to many of you.
+But rest assured, that this and so much more
+is going to be completely within your grasp in just a little bit of time.
+>> But today, we focus on some of the higher level ideas
+to give you a taste of CS50 and computer science
+in a sense of what you're signing up for.
+And indeed, computer science might be distilled more
+simply as computational thinking-- thinking like a computer, if you will.
+And there's so many different things ingredients that go into that,
+but let's propose just three for today.
+If the goal of the class ultimately is not to teach you programming,
+is not to teach you C or PHP or SQL or any number of the words
+and acronyms in the course's description,
+but rather to teach you to solve problems more effectively
+and to think more methodically and more algorithmically, so to speak.
+Let's see what exactly this means.
+>> So I would propose that thinking computationally boils down
+to solving problems.
+What do you need to solve a problem?
+You need to input-- like the input to the problem--
+you need an output, which is hopefully the solution,
+and then you need a process by which to solve that problem, which
+we'll call an algorithm-- a set of instructions for solving some problem.
+>> But first, let's focus on the first and the last of these inputs and outputs.
+Computers after all, apparently only understands zeros and ones.
+But how can that possibly be?
+Even if you're not familiar at all with what's underneath the hood,
+you probably at least heard that computers understand binary--
+just zeros and ones-- but how can you possibly do anything interesting?
+>> Well, one of the themes of the class is going
+to be this layering-- where today, we'll take a quick glance at the lowest level
+details, but with each passing day, where we layer
+or abstract on top of those details to actually solve higher level
+problems of interest to us.
+>> So here is what we might call binary-- with just an alphabet of 0 and 1.
+But we humans are mostly familiar with decimal.
+Dec meaning 10.
+Bi meaning two.
+And so in the decimal system, we have 10 digits
+at our disposal-- of course, zero through nine.
+So if you look at a number like this, most of you
+intuitively just grasp that is 123.
+There's nothing really hard about that.
+But why is it 123?
+Well, if you think back to grade school-- or at least
+the way I learned this kind of world-- you
+might recall that we treated these things in columns, or places.
+>> So we have the ones place on the right.
+The tens place in the middle.
+The hundreds place on the left.
+And then how do we get from this pattern symbols--
+1 2 3-- to this higher level idea that we know as 123?
+Well, it's just some simple arithmetic.
+Right?
+>> The one there is essentially means give us 100 times 1 plus 10 times
+2 plus 1 times 3.
+And of course if we do out the math there, it's 100 plus 20
+plus 3-- otherwise known as 123.
+>> So if you're on the same page as that right
+now and are comfortable with the so-called decimal system as a human,
+it's actually well within your scope of comfort
+to consider now the binary system.
+Take a wild guess-- this represents, in the world of computers
+in binary-- what number?
+Zero.
+>> But why is that?
+Well, it turns out that the columns or places here-- they're not powers of 10.
+1, 10, 100, 1,000, and so forth.
+They're instead, quite simply, powers of 2.
+So, 1, 2, 4, 8, 16, 32, and so on.
+And so now we of course get to 0 here simply because we have 4 times
+0 plus 2 times 0 plus 1 times 0, which of course gives us 0.
+>> But how do I go about representing the number 1?
+What's the pattern of zeros and ones to represent
+the number we humans know as 1?
+001.
+And 2?
+010.
+>> And now the pattern starts to repeats.
+Now it's 011.
+And again, 0 fours, one 2, one 1.
+So 2 plus 1.
+That's 3.
+>> And now to represent 4, we don't just change that 0 to a 1.
+You sort of have to carry, so to speak, and the numbers
+start flipping around just like in the decimal world.
+>> So this is 4.
+This is 5.
+This is 6.
+This is 7.
+And so we've counted as high as 7.
+>> Now all we just need is more a bits-- more zero's and one's.
+And indeed "bits", if you've heard this term-- binary digit.
+Bit is where that comes from.
+And so if we want to represent bigger numbers, we need more bits.
+But let's move away from slides now to something a little more real.
+Suppose that we want to actually represent this thing.
+>> Well let's take a look now at a little demonstration.
+So this is a web based application that one of CS50's own, Michael G,
+put together this summer to help us elucidate exactly this idea.
+And would someone like to venture up on stage
+in front of all his or her classmates?
+Right there in front.
+Come on up.
+>> You have to be comfortable on camera and the internet.
+Oh, right here.
+OK.
+We're OK.
+All right.
+Come on up.
+What's your name?
+Emily come on up.
+So this is Emily.
+What year are you?
+>> Freshman.
+>> Emily, nice to meet you.
+David.
+>> All right.
+So up on the screen here, we have this touch screen
+which is going to allow us to actually interact with this program,
+and it's just a browser.
+It's Chrome full screened at the moment, but it's
+been programmed by Michael to respond in a way that allows
+us to play around with binary digits.
+>> So for instance, here we have not three but eight bits-- zeros and ones.
+Right now, we're looking at the number 0.
+And indeed, all eight zeros in decimal means zero.
+So that's all that's being hinted at here.
+>> So if you wanted to represent the number 8,
+what's the pattern of zeros and ones that you want?
+You can simply tap up or down or the numbers themselves.
+All right.
+So that of course is 8, as you can see up there.
+And if we wanted to do 16, what do we do?
+>> Yep, just touch it again.
+16.
+All right.
+So this is all fine and good, it's still very low level.
+We need a way in the real world for Emily
+of actually representing these things.
+And so suppose that we turn these zeros and ones, which is very
+conceptual, into actual light bulbs.
+Right?
+>> A computer is a physical, mechanical, electrical device.
+And its input-- at least if you plug it in or charge it--
+is to have battery power and electrons flowing in and out.
+>> So now, why don't we stop thinking about bits as zeros and ones,
+but something more physical like light bulbs here.
+And if Dan Armendariz could join me for just a moment-- come on up--
+we're going to queue up an application.
+>> Come on over, Emily.
+Sorry this is the most awkward demo for you ever.
+Come on over here.
+We're going to queue up with thanks to Dan
+Armendariz, another member of our staff, an application known as binary bulb.
+>> So what we have here is an iPad application
+that has the following user interface on the screen for Emily.
+It's just got the same exact UI essentially that's over there.
+And if you now want to represent the number, say 8,
+how would you go about doing this noticing at the right,
+the light bulbs that we have here?
+Ah-ha.
+Magical.
+So if we want to now turn this into something a little more challenging,
+and let's go ahead and pick a random number like the number 50 here.
+Input this.
+And if you can now be challenged to come up with the number 50,
+we'll have a fabulous prize for you.
+>> EMILY: OK.
+Oh my God.
+DAVID MALAN: Arithmetic is indeed hard in front
+of hundreds of your classmates.
+But 50 has been the answer here.
+>> [APPLAUSE]
+>> And so now, this is meant to be demonstrative for Emily.
+So, in here, is some light bulbs quite like these,
+but it's actually the little magnetic strips.
+And what's cool about these and the reason we use them in CS50
+is that they support something called an API-- an application programming
+interface, which is just a fancy way of saying that what one of our staff
+did over the summer was create an iPad application here
+that talks over the internet to the light bulbs over here,
+which are wirelessly connected to another device.
+But this is now an option for final projects.
+And so Emily, if you would so like, at the end of the term,
+you can adorn your dorm room in the meantime with those.
+Thank you to Emily as well.
+>> [APPLAUSE]
+>> But now, let's turn our attention to what
+that message might have looked like, and it's a little something like this.
+In fact, this is an example just as a teaser
+of what's to come of what's called an API request.
+And so what we have here is simply exactly the kinds of message
+that after a few weeks time in CS50, you'll
+be able to send to something fairly familiar like that to actually
+turn them on and off.
+But this is all fine and good.
+Right?
+We have the mental model hopefully for representing numbers with
+zero's and one's.
+And from zeros and ones, we can get to higher numbers like 50,
+as Emily just did, or we can move up from that.
+And I claim that we can represent things like letters as well.
+Right?
+>> Computers are far more interesting than just numbers.
+And so how do you go about representing words
+on the screen or emails or essays or the like?
+Well, it turns out that computers simply abstract on top of these low level
+details, and humans some time ago, came up with an arbitrary, but a consistent,
+mapping of numbers to letters-- so that any time you see a capital letter
+A on your computer screen, odds are what's
+underneath the hood is a pattern of zeros and ones
+that represent the number, per this chart, 65.
+>> And more physically inside of your computer,
+are millions of things called transistors-- these days-- which
+are just switches if you will, things that can go on and off and so imagine.
+Not eight of these large light bulbs but millions of these tiny little light
+bulbs, or switches or transistors, that can turn on and off
+based on how you program them.
+And so now we have a way of representing letters as well.
+>> In fact, if I were to use this mapping here and try to actually
+spell something out, we might look at this pattern of decimal digits
+right now.
+So we're not going to even focus on binary anymore.
+Let's just consider these as decimal number 72, 73, 33.
+But what might this represent?
+Anyone have a sufficiently photographic memory
+to know what's spelled on the screen here?
+Yeah a few.
+So hi.
+H-I and then an exclamation point, which was not actually on the screen.
+But indeed there's a mapping for every letter to every number
+that you might want to type on your keyboard.
+>> But numbers don't have to represent just letters.
+Right?
+All of us know about images and photographs and audio files
+and video files and the like.
+So clearly we can represent higher level things still.
+And so what a computer does is simply choose
+to interpret patterns of zero ones differently based on the context.
+>> If you double click a Microsoft Word icon,
+you see words on the screen instead of colors and pictures
+because word knows that this is an essay that you've actually typed.
+If you instead double click on a JPEG or a GIF or a PNG,
+it opens up and is an image because the .PNG or the .docx or whatever the file
+extension is and whatever software you're using knows to interpret
+a pattern of zeros and ones differently based on what its purpose in life is.
+>> So for instance, this same sequence of numbers
+might represent how much red do you want, how much green do you want,
+and how much blue do you want.
+And indeed, if you've ever heard RGB-- so just red green blue.
+And so if I see numbers like, this give me 72 red, give me 73 green,
+and 33 blue, this is how a computer using three bytes-- where
+a byte is eight bits or 24 bits-- would represent a pretty nasty shade
+of brown or yellow here.
+And in different contexts, could those exact same patterns in zeros and ones
+mean something completely different as well.
+>> So we have now a way of representing information-- zeros and ones.
+On top of that, we get letters.
+On top of that, we might get colors.
+And let's assume for today that we can get audio and video
+and things so much more sophisticated than that.
+>> But now let's consider how we use those inputs
+and produce those outputs now that we have
+a way of representing that information.
+Well, we need something called an algorithm.
+Again, a set of instructions for solving some problem
+step by step-- and the more precise, the better.
+>> And so an example with which humans are admittedly less familiar these days,
+but nonetheless is still with us in software,
+is the process of looking up someone in a phone book.
+>> Now, fewer and fewer folks know each year what this relic actually is here.
+But back in my day, this was a phone book
+with thousands of pages and numbers and people's names from A through Z.
+And even though we're kind of cheating a bit-- this is mostly yellow pages.
+There were also white pages at the time, which
+had all of those names and numbers of actual human beings.
+>> And if I wanted to look someone up in a phone book like this today, of course,
+I just type in the first few characters of his or her name,
+and my phone finds that information.
+But the process by which your iPhone or Android phone
+or whatever is actually finding someone in your contacts list
+is identical to what we humans probably have done for some time.
+>> Now I could take this problem, if you will,
+and the inputs here are not zeros and ones.
+They're pages-- like, let's say 1,000 pages.
+And if I wanted to look up someone like Mike Smith in this phone book,
+I could start at the beginning and see that I'm in the A section
+and then turn one page at a time, looking and looking
+as I make to the B's and the C's and the D's and so forth for Mike Smith.
+Smith starting with an S, I'll hopefully eventually find him.
+>> Is this algorithm-- that process-- correct?
+Yeah.
+It's correct.
+I will find Mike if he's in here, but what's the caveat that you might offer.
+It's slow.
+Right?
+I know Mike S is sort of toward the latter half of the phone book.
+Why the heck am I starting at the beginning
+and going page by page by page.
+So of course, I could flip it around and start from the back,
+but that's going to get me there at the same rate,
+if you willl-- page after page after page.
+And it's not going to work if I want to search for someone else whose
+name comes earlier in the alphabet.
+>> So what if I do what I learned in grade school,
+again, do things not by ones but by twos.
+So 2, 4, 6, 8, 10, 12, and so forth.
+Is that correct?
+No.
+It's kind of correct.
+But some of you who murmured no, where is the problem, or the bug,
+the mistake so to speak.
+Yeah.
+>> STUDENT: You might skip over the right entry.
+>> DAVID MALAN: Yeah.
+I might skip over Mike Smith is because I've taken two pages at once
+and he just happens to be sandwiched between those two pages.
+I might realize that I'm on to the T section
+not having found Mike Smith yet.
+>> And so what might the fixed there be?
+Well, if I do hit the Ts in the phone book,
+I might need to double back one or so page.
+So it's fixable, but it's not quite as simple
+as just going by two to speed up my performance.
+But what?
+Come on.
+What is what most humans are going to do with this kind of phone book?
+You're given the phone book.
+What do you do?
+>> What's that?
+Go to the middle.
+So I heard go to the middle, and I find myself roughly in the M section,
+so to speak.
+And now what do I want to do?
+Good job.
+What's your name?
+>> JAMES: James.
+>> DAVID MALAN: James, all right.
+What do I do next?
+JAMES: You go in the half that has the S's.
+DAVID MALAN: All right.
+I'm going to go into the half that has the S's in it because, again,
+a stipulation here was that this thing is sorted.
+It's a pretty useless 1,000 pages if Verizon doesn't actually
+sort these things for us A through Z.
+So if I know Mike is probably in the latter half of the phone book,
+I can now.
+>> [LAUGHS]
+>> Tear the problem in half.
+>> [APPLAUSE]
+Thank you.
+Tear the problem in half.
+That was actually real-- that struggle.
+So tear the phone book in half, leaving myself
+with fundamentally the same problem.
+But of course, half as large.
+And if I follow James's advice again, and I go here.
+I say, oh now I'm in the T section.
+>> And so of course, I can tear the phone book
+in half one more time, leaving me with a problem that's
+now a quarter of the size.
+So I've gone from 1,000 to 500 to 250 to 125 and so forth.
+It feels like I'm taking bigger bites out
+of this problem with each iteration, or each step in it.
+>> And indeed, the time I'm going to spend finding Mike Smith in this example
+is so much less because eventually I'm going to whittle this pone book down
+to just one lone page.
+And if Mike is on that page, I'm going to go ahead and give him
+a call having found him.
+>> But just how much better is that algorithm--
+that dare say intuitive algorithm-- than the ones we
+started with which we're very linear-- left to right-- at a pace of 1 or 2x?
+>> Well, let's plot this.
+We don't have to worry too much about math or numbers in this case here.
+We just look at a plot.
+So on the x, or horizontal axis, is the size of the problem--
+how many pages are there.
+On the y, or the vertical axis, is how much time
+is it going to take me to solve it.
+And maybe that's how many page turns, how many seconds,
+how many-- some unit of measures.
+>> And I've drawn a red straight lines here because if each additional page
+of the phone book, I require to make one additional step.
+So if Verizon adds one more page next year,
+I might have to flip one more page to find someone like Mike Smith.
+>> Meanwhile, the second algorithm, which I went by twos, is the same shape.
+It's still very linear, very left to right, taking equal bytes each time,
+but the slope is a little lower.
+>> For instance, if the size of the problem were roughly here
+and I used my first algorithm, I might end up all the way
+at the top of that red line.
+But if I instead use to twosies approach,
+the yellow line suggests because it's lower,
+that it's going to take me less time the solve.
+>> But what's the shape of the third algorithm-- again, arguably
+the most intuitive algorithm?
+Well, it looks a little something like this.
+It's curved, or logarithmic, in shape.
+And even though it never kind of flattens out,
+it asymptotically inches up and up and up but terribly slowly
+versus everything else.
+And what's the take away?
+Well, we call it log n.
+But what does that actually mean?
+Well if Verizon doubled the number of pages in the phone book
+next year from 1,000 to 2,000.
+How many more steps is my first algorithm going to take?
+>> My first algorithm.
+Maybe 1,000 more steps.
+If they doubled the phone book, I'm going
+to have to flip through another 1,000 pages to find Mike.
+Of course, if the second algorithm, maybe 500 because I'm
+going twice as fast.
+>> But if Verizon doubles the number of pages between this year and next,
+with my third algorithm-- the divide and conquer that James proposed,
+going in half and half and half-- how many more steps will
+it take me next year to have a phone book of a size 2,000?
+Just one.
+Because with one bite, I can take, out of that problem, half of the pages
+away.
+And if you think about this a little crazily now-- if the phone book doesn't
+have 1,000 or 2000 page, but let's say 4 billion pages--
+it's a big phone book-- how many times or how many steps
+is it going to take me to find Mike Smith in the phone book
+with 4 billion pages.
+You can sort of start to do the math.
+All right.
+4 billion divided by 2.
+So that's 2 billion divided by 1.
+That's 1 billion.
+Then half a billion.
+Then 250-- so you can do this again and again but not that many times before
+you get to one page.
+>> And indeed, even if the phone book is 4 billion pages long
+or the database you're searching is 4 billion records long,
+it's going to take you give or take 32 steps only to find Mike Smith.
+And if you double the phone book next year from 4 billion to 8 billion,
+33 steps instead of just 32.
+>> And this is testament to one of the ideas
+that we might embrace in computer science more generally, which
+is this computational thinking and approaching a problem
+frankly using tools from your already familiar tool
+kit-- your real world with which you're familiar,
+but harnessing those ideas to actually solve problems.
+>> But we need to formalize our solutions to these problems.
+And so let me introduce for a moment something we might call pseudocode.
+Much of the semester, we'll spend using actual code in languages like C and PHP
+and JavaScript and SQL and the like.
+>> But for now, let's just look at something fairly intuitive
+like English.
+I might distill that algorithm with which
+I found Mike into steps like this.
+>> Pick up the phone book
+>> Open to middle of phone book
+Look at the name's
+If Mike is among the name's
+Call Mike
+Else if Smith is earlier in the book
+Open to the middle of the left half of the book
+Else go to line 3
+Else if Smith is later in the book
+Open to the middle of the right half of the book
+Go to line three
+Else
+Give up
+And there's a few characteristics now of this that are worth pointing out.
+So one, all the lines I've highlighted in yellow
+we're going to start calling statements or functions or procedures.
+They're just actions do this, and there's not
+all that much variability to it.
+>> Next step here though, are these conditions-- if, else, else if, else.
+And these are called conditions, or branches, and they're decision points.
+And they allow us to do something conditionally.
+>> And in fact, let's take a quick look at perhaps a familiar face--
+we'll call him Bill-- and exactly what these conditions,
+how these might be used.
+>> BILL GATES: People make decisions every day.
+For example, before you go outside you kind of have an if statement that says,
+if it's raining, then I need to get my jacket.
+>> And computers are amazing once you decide those kinds of statements
+that they can reliably execute those things at unbelievable speed.
+And so a computer program really is a little bit of math and some
+if statements where the decision gets made.
+>> DAVID MALAN: So now let's focus on a few different lines--
+the ones I've highlighted in yellow here.
+And it turns out there's different ways of expressing this idea.
+But intuitively what our lines 8 and 11 that I've highlighted here telling you
+to do?
+Yes, go to line 3, but what behavior is that really inducing?
+It's some kind of loop or cycle, and you can kind of see it.
+Right?
+If on line 8, you go back to line 3, and then you hit line 8 again,
+you might go back to line 3, back to line 3, back to line 3.
+There's this sort of cycle or loop.
+And indeed, that's induced in line 11 potentially as well.
+And this is a basic programming construct as well.
+>> You might not want to just do something with a statement
+or do something conditionally with a condition or branch.
+You might want to do something cyclically with a loop.
+And we'll have someone else with whom you might be familiar-- we'll call him
+Mark-- explain this concept here.
+MARK ZUCKERBERG: One thing that computers are
+really good at is repeating commands.
+As a person, you'd get really bored if you
+had to do the same thing lots of times in a row,
+but a computer can do the same thing millions or even billions of times
+and not get bored and be able to carry that out really well.
+>> So for example, if I want to wish everyone
+on Facebook a happy birthday by sending them an email,
+it might take me more than a century to actually write out
+all of those emails to everyone.
+But with just a few lines of code, I can have a system send an email to everyone
+on Facebook wishing them a happy birthday.
+>> So that's what loops are and why they're valuable and something
+that computers can do very well.
+And just last week, you might have seen that Mark Zuckerberg and Facebook
+posted this announcement, which is that they just
+have passed an important milestone for the first time ever.
+1 billion people used Facebook in a single day, specifically last Monday.
+One in seven humans on Earth apparently logged into Facebook.
+>> Well, this seems a good opportunity to look back on where Facebook began,
+and we went through CS50's own archives because it turns out in 2005,
+Mark gave a guest lecture in CS50.
+You'll see that production values weren't quite the same back then
+in terms of the technology available, and you'll also
+see that the presence of this guest lecture
+didn't necessarily pique the interest of the student body, your predecessors,
+as much as it might have just a few years later.
+>> So let's take a look at Science Center C.
+SPEAKER 2: Please join me, and welcome.
+[APPLAUSE]
+MARK ZUCKERBERG: Yo.
+All right.
+Cool this is the first time I've ever have had to hold one of these things.
+So I'm just going to attach it really quickly.
+All right.
+Can you hear it?
+Is this good?
+Is this amplified at all?
+All right.
+Sweet.
+So, this is like one of the first times I've been to a lecture at Harvard,
+but--
+>> DAVID MALAN: So eventually the Science Center did zoom in on the video,
+but not before capturing this excerpt where Mark's talking,
+which he discussed his roommate, Dustin, who
+and realized that Mark is about to mention to programming languages--
+one called Pearl, one called PHP-- as he discusses
+the origins of Dustin's contribution.
+MARK ZUCKERBERG: I started running the site
+and launched it at Harvard in February, 2004.
+So I guess almost two years ago now.
+And within a couple of weeks, a few thousand people had signed up,
+and we started getting some emails from people at other colleges asking
+for us to launch it at their schools.
+>> And I was taking 161 at the time.
+So I don't know if you guys know the reputation of that course,
+but it was kind of heavy.
+It was a really fun course, but it didn't leave me with much time
+to do anything else with Facebook.
+So my roommate Dustin, who I guess had just finished CS50, was like, hey.
+I want to help out.
+I want to do the expansion and help you figure out how to do the stuff.
+>> So I was like, that's pretty cool, dude.
+But you don't really know any PHP or anything like that.
+So that weekend he went home, bought the book Pearl for Dummies,
+came back and was like, all right.
+I'm ready to go.
+>> I was like, dude, the site's written in PHP not Pearl, but that's cool.
+>> So he picked up PHP over like a few days because I
+promise that if you have a good background in C,
+PHP is a very simple thing to pick up.
+And he just kind of went to work.
+>> Before we take a look now at where the course is going,
+allow me to invite just some of SC50's staff up on to stage.
+Some of them are shopping their own courses.
+But if those TFs and CAs and course heads who are here could come on up
+and join me for a quick hello.
+>> Allow me to introduce in particular, Hanna, Maria, Daven, and Rob,
+CS50's course heads here in Cambridge.
+>> [APPLAUSE]
+>> DAVID MALAN: Indeed, testament to the support structure that the course has
+built out over the past many years, CS50 staff this year numbers nearly 100,
+and that's here in Cambridge alone.
+Meanwhile, in New Haven, are there some 40 TFs and CAs and staff members there
+to run the course as well.
+>> Allow us to introduce first, Rob Bowden.
+ROB BOWDEN: Hi.
+I'm Rob.
+This is my sixth year TFing in the course.
+So, all the way back in my freshman year, I did not take CS50.
+Your freshman fall-- you might be familiar
+that you can only take four courses and there are so many courses today.
+So I'm like, eh.
+I took AP CS my senior year of high school it was horrible.
+So, I'm like, eh.
+Computer science is not for me.
+>> So then it was over the course of my freshman
+fall, that I had a friend in CS50, and I think I attended one lecture with her.
+It's like, oh, this is kind of better than what I had in high school.
+>> And over the course of the year, I had my own problem sets
+in the courses I was actually taking.
+But I found that whenever I wanted to procrastinate on those,
+I would go back to CS50 and look at some of that stuff.
+So, yeah.
+I'm cool.
+I procrastination with coding.
+So then it's at the end of the fall that I realize, hey,
+computer science is pretty cool.
+I end up taking CS51.
+In the next semester, I end up taking CS61.
+And it all from there, then I end up declaring
+computer science, which I had absolutely no intention of doing
+when I came into college.
+And now I'm here.
+So the course is what you make of it.
+I hope you enjoy it.
+>> [APPLAUSE]
+DAVID MALAN: Thank you to Rob.
+>> And now Maria, our head course assistant.
+>> MARIA: Hey guys.
+My name is Maria.
+I'm a sophomore in Cabot House, coming from Bulgaria,
+and I'm super excited to be part of the staff this year.
+I took CS50 as a freshman last year, and I never even
+thought about CS beforehand.
+So I absolutely love the course, and I hope you all love it as much as I did.
+And, yeah.
+Welcome to CS50.
+DAVID MALAN: Thank you to Maria.
+[APPLAUSE]
+Now Hanna, our head teaching fellow.
+HANNA: Hi, I'm Hanna.
+I'm a senior in Cabot studying computer science.
+I took CS50 as a freshman and had been TFing-- this'll be my third year.
+So I will be happily involved in CS50 for all four years,
+and I'm looking forward to working with you all.
+DAVID MALAN: Thank you to Hanna.
+[APPLAUSE]
+And lastly, Daven, our precepter.
+DAVEN: Hey guys.
+I'm a precept over in computer science here.
+This'll be my fourth year teaching.
+I also help manage the course.
+So I'm sure you'll see me around, especially at office hours.
+I'm always at office hours.
+So if you see me walking around, definitely come say hi.
+I love to meet everybody.
+Otherwise, have fun, and I'll see you around.
+>> DAVID MALAN: Thank you to Daven as well.
+So you'll meet all of these folks before long.
+But without further ado, if you guys would
+like to resume your seats from earlier.
+Allow me to introduce from afar now some of our friends from New Haven,
+in particular the course's heads who'll be overseeing CS50 there-- Professor
+Brian Scassellati, Jason, and Andi, who just-- so that we didn't tempt fate
+with any FaceTime or the like-- have just sent us minutes
+ago the following video in which they say hello from lecture hall
+at Yale, in which lecture is being streamed right now.
+>> So our friends from Yale.
+BRIAN SCASSELLATI: Hi, David.
+Hi, everyone at Harvard.
+We are so excited to be bringing CS50 to Yale this semester.
+My name is Brian Scassellati, but everyone just calls me Scas.
+And I'm here today to introduce to you the CS50 staff.
+>> [CHEERING]
+>> And more importantly, I'm here to introduce as well
+all of the students at Yale who as of this morning
+have made this the most popular course at Yale the CS50 students.
+>> [CHEERING]
+>> So we're very excited to be seeing you here
+on Friday and on Saturday for Puzzle Day and have a great lecture.
+Bye.
+>> [APPLAUSE]
+>> DAVID MALAN: On the screen here is the names of the some of 140 staff
+members who await you over the course of the semester-- some of them
+here in Cambridge, some of them here in New Haven.
+And indeed you'll have an opportunity this Saturday,
+as Scas notes, to attend CS50 Puzzle Day.
+You might have seen little puzzle pieces slipped under your doorways recently.
+We have a few extras here later on when you exist.
+If you assemble all four puzzle pieces and merge forces with rooms
+nearby yours in your house or dorm, they'll
+assemble into a QR code-- or a two dimensional bar code, that
+once assembled and scanned with your phone will lead you
+to some fabulous prize or-- I suppose you could just photograph this now
+as well.
+>> But find those puzzle pieces nonetheless in order to win that fabulous prize.
+And indeed one of the traditions in SC50-- ah, too slow.
+One of the traditions in CS50 is to serve cake after the first lecture.
+>> And so indeed, in a few minutes from now,
+there will be cake served outside both here and New Haven as well.
+>> But first-- we decorated them ourselves.
+But first-- and hopefully there'll be enough.
+>> But first, a quick look.
+So lectures is indeed will be produced mostly here in Cambridge.
+But each month, we'll hop down to Yale with CS50's production team and stream
+the course in the reverse direction as well so
+as to bring these two campuses truly for the first time in history
+as close together as possible as one in the same course.
+>> In terms of the support structure that's been stood up here in Cambridge as well
+as in New Haven, are sections.
+Indeed, as some of you may know, we have different tracks
+within the course for those less comfortable, more comfortable,
+and somewhere in between so that irrespective of your prior background,
+can you ultimately succeed in the class.
+>> Office hours meanwhile, are an opportunity on Mondays and Tuesdays
+and Thursday evenings to work both here and in New Haven on our course's
+problem sets with dozens of the course's staff near you.
+>> Problem sets meanwhile, are supported by things we call
+walkthroughs, which are video based tutorials that truly answering FAQ
+of where to begin a week's challenge.
+And postmortems walk you through possible solutions
+so that the end of the problem set too, you
+know exactly what you could have done differently or altogether otherwise.
+>> The problem sets themselves come in two editions, a standard edition
+that we expect and invite most of the class-- some 90% plus to do--
+and a so-called hacker edition on which every page is emblazoned
+hacker edition, hacker edition, hacker edition,
+so that you have that karma if you will, for diving
+into more advanced versions of the course's problem sets
+that cover ostensibly the same material but with a more sophisticated approach
+and with additional background sometimes introduced.
+>> Meanwhile, are there nine late days that you can apply to the course's problem
+sets as well as the lowest score, which we drop at the terms end.
+>> But what awaits?
+Well, a taste of the problem sets at hand on Friday
+and next week where we dabble for just a few days in something
+called Scratch, a graphical programming language developed by our friends
+at MIT's Media Lab that allows you to program either for the first time
+or in a new environment altogether using a drag and drop type environment.
+Whereby puzzle pieces only interlock together
+if it makes logical sense to do so.
+>> Meanwhile in problem set two last year for instance,
+did we introduce the class to the world of cryptography,
+the art of encrypting or scrambling information.
+Indeed, this text here if decrypted, will actually
+lead you to some fun destination.
+And in the problem set, what we had students
+do is implement exactly those kinds of things-- an algorithm,
+or set of instructions for scrambling and scrambling information.
+>> And in the hacker edition of that same problem set,
+did we challenge students to take a encrypted file from a typical computer
+system with lots of usernames and encrypted passwords
+and to crack those passwords-- actually figure out
+what they were without knowing anything a priori about those actual passwords.
+Meanwhile, do we transition in the problem
+sets to then looking at the world of graphics.
+And in fact, you might imagine now that this could perhaps
+be the simplest way to represent a black and white image.
+>> A white pixel, or square, as at top right there,
+might be represented with a 1 and a black square
+might be represented with a 0.
+And just by using more bits like we proposed earlier with 72 and 73 and 33,
+could we represent color pixels as well.
+And what we do during this problem set is
+generally take a stroll around campus with a digital camera,
+take photographs of people, places, and things.
+Then somehow every semester, we seem to accidentally
+deleted or corrupt the memory card on which all of those photos are,
+and so you are challenged to then write software
+with which to recover those JPEGs from a copy of our camera's card.
+>> Meanwhile, do we hand you later in the term a dictionary of English words
+that have 143,000 words, and you need to come up
+with a smart way of loading them into memory,
+or RAM so to speak, to answer queries of the form: is this a word,
+is this a word, implementing the fastest spell checker that you can,
+even pinning yourself potentially against classmates
+to see which of you uses the least amount of time
+when running your code and even the least amount of memory.
+>> Later in term do you actually implement your own web server.
+So not just a website in a language called HTML and more,
+but a web server that actually listens to requests on the internet
+and responds to them.
+And indeed, this is how we bridge our world of C with which you'll
+become familiar next week and PHP and HTML and JavaScript
+and CSS and the like.
+>> Because one of the first web based project we do later in the term
+is historically CS50 Finance.
+while also writing code to talk to Yahoo Finance getting semi real time stock
+quotes in order to update your own portfolio.
+>> But lastly of course, is the final project--
+an opportunity to do most anything of interest to you to solve a problem here
+or beyond of interest to you that's somehow inspired
+by the lessons learned in the class.
+>> And the class, as you may know, culminates in so-called CS50 Hackathon
+and CS50 Fair and any number of other cultural events
+throughout the semester that allow you to engage
+with each other and the course's staff.
+>> For instance, at Fire and Ice in Sitar this year, well, on Friday afternoons,
+we invite some 50 students to lunch, whoever
+would like to join us, myself, and the staff,
+and our friends from industry and alums to chat about life in the real world
+and beyond while enjoying a good lunch.
+At the Hackathon will you see such images
+as these, including plenty of candy-- and as of 2014 for the first time--
+vegetables.
+>> [APPLAUSE]
+>> But by 5:00 AM, does the scene usually look a little something like this.
+And then just a week or so later, is the CS50 Fair
+to which some 2000 plus students and staff and faculty
+members from across campus and across campuses this year
+come to see and delight in the accomplishments of CS50 students, which
+is now you.
+>> And indeed, while this year we'll be inviting and busing anyone
+at at Yale who would like to come up to Cambridge this Saturday for CS50 Puzzle
+Day, and we'll do the exact same thing in December for the CS50 Hackathon
+so that Harvard and Yale students alike partake in both of these events.
+>> We will also hold CS50 fairs in Cambridge and in New Haven this year
+so that students on both campuses and staff and faculty
+can see each respective campus's accomplishment.
+And those accomplishments will induce such memory
+as this and this and ultimately this, in which all of you
+exit the class wearing a little something in which you were hopefully
+happy or proud to say that I took CS50.
+>> But before that and before we serve cake,
+we've put together-- thanks to CS50's production team and a certain self
+stick, the one occasion that we use such things for-- when we sent it
+not only here to Cambridge but also to New Haven
+to gather a few hellos from the course's staff and all of the folks
+you will meet both here and in New Haven over the following months.
+>> Allow me to introduce a few more of CS50's staff.
+MARK ZUCKERBERG: Did that make it go?
+Oh, it's going.
+It's going.
+Ooh.
+Yarr!
+>> [MUSIC PLAYING ANDY GRAMMER, "HONEY, I'M GOOD"]
+>> MARY: This is Caitlin.
+That's Jay, and I'm Mary.
+SATO: Hi, guys.
+I'm Sato.
+MICHAEL G.: Hi.
+My name is Michael, G.
+DOUG LLOYD: I'm not.
+No.
+I'm Doug Lloyd.
+I can't believe that I'm holding a selfie stick right now.
+SPEAKER 4: Hi.
+SPEAKER 5: Hi.
+SPEAKER 6: Hello.
+SPEAKER 7: Hi.
+SPEAKER 8: Hey.
+We're hanging out at Yale.
+We're really excited for this semester because it's
+the first time it's coming to Yale.
+It's going to be awesome!
+>> [MUSIC PLAYING]
+>> JACOB SCHERBA: My name is Jacob Scherba.
+I'm excited to teach CS50 because I think
+it bring computer science to people in and approachable way.
+SPEAKER 9: I'm really excited to teach CS50
+because I took the class last year, and it's one of the best classes.
+SPEAKER 10: Yeah.
+My advice is you should take CS50.
+JACOB SCHERBA: I chose CS because I think it's a fun and creative way
+to solve problems in an analytical way.
+SPEAKER 11: Back when I was a little freshman and afraid of computer science
+and afraid of doing engineering and stuff,
+it was the first hard class I took, and it was also my favorite class ever.
+DOUG LLOYD: This is my ninth year teaching CS50.
+That makes me sound so old!
+There's always something new.
+There's always something exciting.
+There's always new challenges faced by new students, and it's fun to help them
+and to experience those challenges with them
+and help them solve their problems.
+>> SPEAKER 12: When I first learned how to do CS,
+it was like learning a super power.
+And to see that in other students and to help them through that process
+is one of the most rewarding things I've ever.
+>> SPEAKER 7: I chose CS because in the beginning, I was a math concentrator
+and I took CS50 and fell in love with it.
+I also felt that with CS, I could build things.
+And that, I thought, was a really cool aspect.
+>> SPEAKER 13: Some advice for new students is go to office hours
+and hang out with the awesome TFs.
+SPEAKER 14: Start your P-SETs early, go to office hours,
+become frends with your TF.
+SPEAKER 15: Yeah.
+Everything she said.
+SPEAKER 16: Don't be afraid to ask for help.
+SPEAKER 17: Yeah.
+SPEAKER 18: Start your P-SETs early.
+SPEAKER 19: It's a big social experience.
+Make a lot of friends this way.
+SPEAKER 14: Go to section It's fun.
+SPEAKER 11: I mean, go for it.
+It's really hard.
+You'll get out of it what you put into it,
+but it's a really fun class especially if you're
+willing to put the time into it, but it helps if you put time into it.
+You'll get a lot more out of it later on.
+MIKE: I'm Mike.
+CAMILLE: I'm Camille.
+HANYA: I'm Hanya.
+MATT: I'm Matt.
+PETER: I am Peter.
+PHILLIP: I'm Phillip.
+PATRICK: I'm Patrick.
+ROB BOWDEN: I'm Rob Bowden.
+BRIAN SCASSELLATI: My name is Scas, and this--
+ALL: --is CS50.
+SPEAKER 20: At Yale.
+SPEAKER 21: At Yale.
+[LAUGHING]
+DAVID MALAN: That's it for CS50.
+We will see you from Yale on Friday, Puzzle Day on Saturday.
+Cake is now served.
+This is CS50.
+>> [MUSIC PLAYING] 
