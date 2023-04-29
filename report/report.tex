@@ -92,6 +92,62 @@ The article \cite{APARICIO20167} discusses the performance of generic text summa
 
 The paper \cite{DHARANIYA2023102150} proposes an ensemble deep learning model for generating movie scripts, which means that multiple models are combined to improve the accuracy and robustness of the system.  The model uses the Ensemble-based Movie Scrip Generation (EMCG), where the Optimized hybrid script generation process using ensemble learning is performed by Bi-LSTM, GPT3, and GPT Neo X models, where the parameters of deep learning algorithms are optimized using the AI-CMO algorithm.
 
+\section*{Corpus}
+
+For our project, we gathered data from various sources including scripts from IMSDb, summaries from Metacritic (MC) and Rotten Tomatoes (RT), as well as subtitles and summaries from Subslikescript (SLS). In addition to that, we also collected some other available data such as movie genres and year of release. Initially, we merged the IMSDb scripts with all other available data to create the first dataset. However, some of the scripts did not have corresponding summaries or subtitles. Therefore, we merged these scripts with whatever data was available for them. In the process of data cleaning, we identified that some of the subtitles contained an unreasonably low number of sentences, some having as few as one. As a result, we removed all subtitles containing less than 100 sentences. This left us with the following data set:
+\begin{itemize}
+  \item IMSDb Scripts: 943 entries
+  \item Subslikescript Subtitles: 772 entries
+  \item Subslikescript Summaries: 785 entries
+  \item Metacritic Summaries: 835 entries
+  \item Rotten Tomatoes Summaries: 781 entries
+\end{itemize}
+
+For this dataset we performed the corpus analysis, that is shown in table 1. 
+
+\begin{table}[h]
+\caption{Average, minimum and maximum number of sentences, words and TTR for the data in the first data set, collected from different sources.}
+\begin{center}
+\begin{tabular}{c|c|ccc}
+  & DATA & AVG & MIN &  MAX\\
+ \hline
+  & IMSDb Scripts &  2807&  334  & 5345\\ 
+  & SLS Subtitles &  1505& 121 & 11077 \\
+Sentences & SLS Summaries&  4 & 1 & 22 \\
+& MC Summaries &  2 & 1 & 12\\
+& RT Summaries &  3 & 1 & 7 \\
+ \hline
+  & IMSDb Scripts &  29421& 4302  & 64311\\ 
+  & SLS Subtitles &  11660& 718 & 49988 \\
+Words & SLS Summaries&  123 & 12 & 616 \\
+& MC Summaries &  64 & 10 & 320\\
+& RT Summaries &  82 & 7 & 123 \\
+\hline
+  & IMSDb Scripts &  0.143&  0.071  & 0.312\\ 
+  & SLS Subtitles &  0.157& 0.002 & 0.422 \\
+TTR & SLS Summaries&  0.696 & 0.471 & 1.000 \\
+& MC Summaries &  0.828 & 0.534 & 1.000\\
+& RT Summaries &  0.757 & 0.600 & 1.000 \\
+\end{tabular}
+\label{tab1}
+\end{center}
+\end{table}
+
+For our analysis, we utilized genre data available from Rotten Tomatoes and Metacritic. As each movie can belong to multiple genres, we performed an intersection between the genres from these two sites to obtain a more concise and accurate genre description for each movie. The objective was to avoid having too many genres associated with the same movie. Next, we counted the occurrence of each genre within the intersected movie genres, and plotted the 15 most common genres in Figure 1.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1.0\columnwidth]{movie_genres.png}
+\end{center}
+\caption{Top 15 most common movie genres in our first data set. The most prevalent genre is drama, followed by comedy and thriller.}
+\label{fig1}
+\end{figure}
+
+
+
+
+
+
 
 
 %----------------------------------------------------------------------------------------
