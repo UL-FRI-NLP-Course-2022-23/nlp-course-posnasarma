@@ -133,8 +133,6 @@ TTR & SLS Summaries&  0.696 & 0.471 & 1.000 \\
 \end{center}
 \end{table}
 
-For our analysis, we utilized genre data available from Rotten Tomatoes and Metacritic. As each movie can belong to multiple genres, we performed an intersection between the genres from these two sites to obtain a more concise and accurate genre description for each movie. The objective was to avoid having too many genres associated with the same movie. Next, we counted the occurrence of each genre within the intersected movie genres, and plotted the 15 most common genres in Figure 1.
-
 \begin{figure}[h]
 \begin{center}
 \includegraphics[width=1.0\columnwidth]{movie_genres.png}
@@ -143,9 +141,35 @@ For our analysis, we utilized genre data available from Rotten Tomatoes and Meta
 \label{fig1}
 \end{figure}
 
+For our analysis, we utilized genre data available from Rotten Tomatoes and Metacritic. As each movie can belong to multiple genres, we performed an intersection between the genres from these two sites to obtain a more concise and accurate genre description for each movie. The objective was to avoid having too many genres associated with the same movie. Next, we counted the occurrence of each genre within the intersected movie genres, and plotted the 15 most common genres in Figure 1.
 
 
 
+\section*{Baseline aproach}
+
+As a baseline approach to summarizing the movie scripts in this project, we employ Latent Semantic Analysis (LSA). 
+
+LSA is a popular text summarization technique that uses singular value decomposition (SVD) to reduce the dimensionality of a document-term matrix and capture the underlying semantic structure of the text. The model assumes that words with similar meanings will appear in similar contexts and can be grouped together.
+
+To use the LSA model for text summarization, we split the movie scripts into scenes and preprocess the scene text by converting it to lowercase, removing non-alphanumeric characters from each sentence. We then use the Sumy library to tokenize the scene text and prepare it for input into the LSA model.
+
+The LSA model identifies the most important sentences in a document based on their semantic similarity to other sentences. We use the LsaSummarizer module from Sumy to generate a summary of each scene, with a target of two sentences per scene.
+
+After generating the summaries using LSA, we evaluate their quality using the ROUGE metric. ROUGE is a commonly used metric for evaluating text summarization models that measures the overlap between the generated summary and the reference summary. ROUGE provides multiple scores such as ROUGE-1, ROUGE-2, and ROUGE-L.
+
+ROUGE-1 measures the overlap of unigrams (single words) between the generated and reference summaries. ROUGE-2 measures the overlap of bigrams (pairs of adjacent words) between the generated and reference summaries. ROUGE-L is a variant that computes the longest common subsequence between the generated and reference summaries, which can handle paraphrasing and word order differences.
+
+The Fig. 2. shows the average ROUGE scores for each of the three metrics for each reference summary. We achieved decent scores for ROUGE-1 and ROUGE-L, bearing in mind that this is only a baseline model.  However, our model struggled to capture longer, more complex phrases and sentences, as reflected in the low score for ROUGE-2.
+
+We believe that the poor performance on ROUGE-2 may be due to the fact that LSA is a bag-of-words model and does not capture word order or phrase structure. Additionally, the model may struggle with more complex sentences that contain multiple clauses or dependent phrases. Despite these limitations, our baseline approach with LSA provides a reasonable starting point for summarizing movie scripts and could be improved with further optimization and fine-tuning. 
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=1.0\columnwidth]{rouge_scores.png}
+\end{center}
+\caption{ROUGE Scores by Reference Summary}
+\label{fig1}
+\end{figure}
 
 
 
