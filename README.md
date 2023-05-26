@@ -21,34 +21,34 @@ To performe the natural language processing you should look at the directories *
 # Installation Instructions
 
 The following python libraries are required in order to run our code. The requirements are split based on what part of the code you want to run.
-	1. Scrip acquisition:
-	   - Requests
-	   - BeautifulSoup 4
-	   - tqdm
-	2. Subtitle acquisition:
-	   - Requests
-	   - BeautifulSoup 4
-	   - tqdm
-	   - Pandas
-	3. MetaCritic/RottenTomatoes summary acquisition:
-	   - Matplotlib
-	   - Numpy
-	   - Selenium
-	4. Baseline model:
-	   - Pandas 
-	   - Sumy
-	   - Numpy
-	   - NLTK
-	   - Rouge_score
-	5. Main model:
-	   - Transformers 
-	   - Datasets 
-	   - Evaluate 
-	   - Rouge_score
-	   - Accelerate
-	   - Sentencepiece
-	   - Bert_score
-	   - Pandas
+1. Scrip acquisition:
+   - Requests
+   - BeautifulSoup 4
+   - tqdm
+2. Subtitle acquisition:
+   - Requests
+   - BeautifulSoup 4
+   - tqdm
+   - Pandas
+3. MetaCritic/RottenTomatoes summary acquisition:
+   - Matplotlib
+   - Numpy
+   - Selenium
+4. Baseline model:
+   - Pandas 
+   - Sumy
+   - Numpy
+   - NLTK
+   - Rouge_score
+5. Main model:
+   - Transformers 
+   - Datasets 
+   - Evaluate 
+   - Rouge_score
+   - Accelerate
+   - Sentencepiece
+   - Bert_score
+   - Pandas
 
 # Contact Information
 
