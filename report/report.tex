@@ -44,10 +44,11 @@
 \Authors{Luka Pavićević, Andrija Stanišić, Stefanela Stevanović}
 
 % Advisors
-\affiliation{\textit{Advisors: Slavko Žitnik}}
+\affiliation{\textit{Advisors: Slavko Žitnik, Aleš Žagar}}
 
 % Keywords
-\Keywords{}
+\Keywords{Movie script summarization, Latent Semantic Analysis, Text-To-Text
+Transfer Transformer}
 \newcommand{\keywordname}{Keywords}
 
 
@@ -56,6 +57,7 @@
 %----------------------------------------------------------------------------------------
 
 \Abstract{
+This project aims to automate the summarization of movie scripts using Natural Language Processing (NLP) techniques. We explore a baseline approach using Latent Semantic Analysis (LSA) and a main approach utilizing the T5 (Text-To-Text Transfer Transformer) model. The generated summaries provide movie enthusiasts with concise information about a movie's plot, characters, and key events. While the results are promising, there is room for improvement in terms of coherence and accuracy. Automating script summarization using NLP offers a time-saving solution for movie enthusiasts, with the potential for further enhancement and improved user experience in movie exploration.
 }
 
 %----------------------------------------------------------------------------------------
@@ -77,18 +79,18 @@
 
 \section*{Introduction}
 
-In today's world, there is an abundance of films being produced every year. It can be difficult for audiences to keep up with all the latest releases. Movie fans often resort to reading summaries or synopses to get a sense of what a particular film is about before deciding whether or not to watch it. However, it can be a time-consuming and difficult task to manually summarise a long film script.
+In today's fast-paced world, where an overwhelming number of movies are released each year, staying updated with the latest releases can be a challenge for audiences. To make informed decisions about which movies to watch, many people turn to summaries or synopses. However, manually summarizing lengthy movie scripts can be a time-consuming and difficult task.
 
-Here Natural Language Processing comes in. Through the use of Natural Language Processing techniques, we can automate the task of summarising film scripts, saving both time and effort.
+Fortunately, Natural Language Processing (NLP) offers a solution. By leveraging NLP techniques, we can automate the process of summarizing movie scripts, saving valuable time and effort.
 
-In this project, our aim is to create a system that can accurately summarise film scripts into concise and informative synopses through the use of Natural Language Processing. By doing so, we hope to provide film enthusiasts with a quick and efficient way to get a sense of a film's plot, characters and key events. Ultimately, this will help them in their decision-making process when choosing which films to watch.
+This project aims to develop a solution that effectively summarizes movie scripts into concise and informative synopses using NLP. By providing movie enthusiasts with a convenient and efficient way to grasp a movie's plot, characters, and significant events, our solution aims to assist them in making informed decisions about which movies to watch.
 
 
 \section*{Related works}
 
 One of the related works in text summarization is the work by Aleš Žagar and Marko  Robnik-Šikonja \cite{zagar2022}, who explored the use of various summarization approaches, including neural models, to produce short summaries from larger texts. In their work, they addressed the problem of selecting the most appropriate summarization model for a given text, and proposed a solution that uses a neural metamodel to automate the selection process based on the input document's representation. This work presents an innovative approach to text summarization, particularly in addressing the issue of model selection, which is important in ensuring the quality of generated summaries.
 
-The article \cite{APARICIO20167} discusses the performance of generic text summarization algorithms on films and documentaries, using extracts from news articles produced by reference models of extractive summarization. The study aims to evaluate the quality of automatic summaries produced for films and documentaries, using well-known behaviors of news articles as a reference. Six text-based summarization approaches were used: Maximal Marginal Relevance (MMR), LexRank, Latent Semantic Analysis (LSA), Support sets, Key Phrase-based Centrality (KP-Centrality), and TextRank. The study found that LexRank and Support Sets had the best performance on movies of all the mentioned aproaches.
+The article \cite{APARICIO20167} discusses the performance of generic text summarization algorithms on movies and documentaries, using extracts from news articles produced by reference models of extractive summarization. The study aims to evaluate the quality of automatic summaries produced for movies and documentaries, using well-known behaviors of news articles as a reference. Six text-based summarization approaches were used: Maximal Marginal Relevance (MMR), LexRank, Latent Semantic Analysis (LSA), Support sets, Key Phrase-based Centrality (KP-Centrality), and TextRank. The study found that LexRank and Support Sets had the best performance on movies of all the mentioned aproaches.
 
 The paper \cite{DHARANIYA2023102150} proposes an ensemble deep learning model for generating movie scripts, which means that multiple models are combined to improve the accuracy and robustness of the system.  The model uses the Ensemble-based Movie Scrip Generation (EMCG), where the Optimized hybrid script generation process using ensemble learning is performed by Bi-LSTM, GPT3, and GPT Neo X models, where the parameters of deep learning algorithms are optimized using the AI-CMO algorithm.
 
@@ -171,9 +173,66 @@ We believe that the poor performance on ROUGE-2 may be due to the fact that LSA 
 \label{fig1}
 \end{figure}
 
+\section*{The main aproach}
 
+The main model used in this project is the T5 (Text-To-Text Transfer Transformer) model. T5 is a Transformer architecture developed for various natural language processing tasks, including text summarization.
 
+The T5 model consists of an encoder-decoder architecture based on the Transformer model. The encoder part of the model processes the input text and obtains its representation. The decoder part of the model then uses this representation to generate the output summary.
 
+To use the T5 model, we first initialize a Tokenizer object. The Tokenizer is used to convert text into a sequence of tokens, which is required as input for the model.
+For text summarization, we need to define the maximum length of the input and output sequences expected by the model. Additionally, we can add an appropriate prefix to the input text to clearly indicate to the model that the task is summarization.
+Afterward, the data is preprocessed to prepare it for input to the model. The input text is tokenized and encoded, and the target summary is also tokenized and encoded.
+
+The training-test set split was intentionally performed to include 43 well-known movies in the test set. 
+After training the model, we use it to generate summaries. This can be achieved by using a pipeline approach, where the input scripts from the test set are passed to the model, and the generated summaries are obtained as the result.
+
+Finally, to evaluate the generated summaries, we employ the BERTScore metric. BERTScore is a metric based on the BERT (Bidirectional Encoder Representations from Transformers) model, which measures the similarity between generated and reference texts. This metric takes into account the semantic similarity and contextual word representation when evaluating the generated summaries.
+
+We calculated precision, recall, and F1 score for each generated summary and obtained the following results: precision = 0.839, recall = 0.819, and F1 score = 0.829. These metrics provide an objective measure of the generated summaries' quality compared to the reference summaries.
+
+In addition to the BERTScore evaluation, the personal analysis was conducted to provide further insights. It was observed that the generated summaries often focus on family relationships, there are cases of repetitive word usage without necessity, and vast majority of summaries begins with the name of the main character. Furthermore, it was noticed that the generated summaries often emphasize certain characters as being the only or the first ones to experience certain events.
+
+Below are several examples of summaries generated by the model, accompanied by comments:
+
+\begin{enumerate}[noitemsep]
+	\item     Prestige:
+ 
+    \textit{Robert Angier (Borden) is a magician and magician who has a reputation as an amateur magician. He's a young magician and a writer who's been a fan of the magician's magic.}
+    
+    The summary captures certain elements but lacks coherence and clarity. It repeats phrases and fails to provide a concise overview of the movie.
+
+    \item Inglorious Basterds:
+    
+    \textit{The French Farmer, a former Nazi colonel, is a slain rat who has been killed by the Nazis in the past year. He is the only one to be killed by a Nazi rat, who has escaped from the Nazi army. The rat's father, the Napoleon, is the first to be murdered by the Nazis in the world.}
+    
+    The summary contains some movie elements but includes incorrect information and lacks coherence. The mention of a "Nazi rat" and a character named "the Napoleon" is confusing and does not accurately represent the movie's plot.
+
+    \item Joker:
+    \textit{Joker is a snub-nose, a man who has a brain injury and a lack of empathy for his family. He's a big fan of comedy, but he is able to make a difference in his life. Joker's mother, whose daughter, is an adolescent, tries to get her back on the streets of Gotham.}
+    
+    The summary touches on several aspects of the movie but lacks coherence and clarity. The mention of a "snub-nose" is not accurate.
+
+    \item Memento:
+    \textit{Leonard, a late model, has a tattoo of a polaroid that he's known for. He tries to find a way to make his life easier, but he can't make any new memories.}
+    
+    The summary provides a good understanding of the movie's premise, but lacks the complexity of the main character's condition.
+
+    \item Silence of the Lambs:
+    
+    \textit{Dr. Lecter, a psychiatrist, is a psychiatric therapist and a psychotherapist. He is an adolescent psychopath who has a history of psychosis. The psychiatrist, who is based in the city of Split City, is the first person to have a mental illness.}
+    
+    The summary correctly acknowledges Dr. Lecter's mental illness and his expertise as a psychiatrist. However, it is important to note that he is not the first person with such a condition, and also that he is not an \textit{adolescent}.
+\end{enumerate}
+
+\section*{Conclusion}
+
+In this project, we aimed to automate the process of summarizing movie scripts using Natural Language Processing techniques. We explored different approaches, starting with a baseline model based on Latent Semantic Analysis (LSA), and then implementing the main approach using the T5 model. Our results showed a decent quality of summaries generated by both baseline and the main model.
+
+However, we also identified certain limitations in the generated summaries, such as the repetition of phrases, lack of coherence, and occasional inaccuracies. These areas could be further improved through model optimization and fine-tuning. Additionally, a personal analysis revealed certain patterns in the generated summaries, such as a focus on family relationships and the emphasis on specific characters.
+
+Despite these limitations, the automated summarization of movie scripts using NLP techniques provides a valuable tool for movie enthusiasts. It allows them to quickly grasp the plot, characters, and key events of a movie, aiding in the decision-making process when choosing which movies to watch.
+
+Overall, this project demonstrates the potential of NLP in automating the task of movie script summarization. Future work could involve refining the models, addressing the identified limitations, and exploring other NLP techniques to enhance the accuracy and coherence of the generated summaries. The development of such solutions can greatly benefit movie lovers by providing them with a time-efficient and informative way to explore a vast array of movies.
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
